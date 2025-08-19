@@ -25,6 +25,10 @@ app.get('/api/v1/users',  async (req, res) => {
     }
 });
 
+//home route
+app.get('/home', (req, res) => {
+    res.render('home');
+});
 
 mongoose.connect(uri).then(
 async ()=> {
