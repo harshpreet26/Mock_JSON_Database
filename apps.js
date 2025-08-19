@@ -13,16 +13,15 @@ app.set('view engine', 'ejs');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static('public'));
 
 //api endpoint exposing user resources
 app.get('/api/v1/users',  async (req, res) => {
     try {
         const data = await readData();
-        res.sent(data);
+        res.status(200).json(data);
     } catch (error) {
-        res.status(500).json({ message: 'error.message' });
+        res.status(500).json({ message: error.message });
     }
 });
 
